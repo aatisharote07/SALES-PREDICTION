@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Outlet Sales Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Populate dropdowns from server metadata when available
+            $.getJSON('/metadata', function(meta) {
+                if (meta && meta.encoders_loaded) {
+                    function fillSelect(id, items) {
+                        var $sel = $(id);
+                        $sel.empty();
+                        items.forEach(function(v) { $sel.append($('<option>', { value: v, text: v })); });
+                    }
+                    if (meta.Outlet_Size && meta.Outlet_Size.length) fillSelect('#outlet_size', meta.Outlet_Size);
+                    if (meta.Outlet_Location_Type && meta.Outlet_Location_Type.length) fillSelect('#outlet_location_type', meta.Outlet_Location_Type);
+                    if (meta.Outlet_Type && meta.Outlet_Type.length) fillSelect('#outlet_type', meta.Outlet_Type);
+                }
+            });
+
+            $("form").on("submit", function(event) {
+                event.preventDefault();
+                $.ajax({
+                    type: "POST",
+                    url: "/predict",
+                    data: $(this).serialize(),
+                    success: function(response) {
+                        if (response.prediction !== undefined) {
+                            $("#prediction").html("Predicted Outlet Sales: ₹" + response.prediction.toFixed(2));
+                        } else if (response.error) {
+                            $("#prediction").html("Error: " + response.error);
+                        } else {
+                            $("#prediction").html("Unexpected response.");
+                        }
+                    },
+                    error: function(xhr) {
+                        var msg = 'Error predicting outlet sales.';
+                        if (xhr.responseJSON && xhr.responseJSON.error) {
+                            msg = xhr.responseJSON.error;
+                        }
+                        $("#prediction").html("Error: " + msg);
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Outlet Sales Prediction</h1>
+            <p>Forecast sales using your outlet details.</p>
+        </header>
+
+        <main class="grid">
+            <section class="card">
+                <h2>Enter Details</h2>
+                <form>
+                    <div class="field">
+                        <label for="outlet_establishment_year">Outlet Establishment Year</label>
+                        <select id="outlet_establishment_year" name="outlet_establishment_year" required>
+                            {% for year in range(1980, 2025) %}
+                                <option value="{{ year }}">{{ year }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label for="outlet_size">Outlet Size</label>
+                        <select id="outlet_size" name="outlet_size" required>
+                            <option value="Small">Small</option>
+                            <option value="Medium">Medium</option>
+                            <option value="Large">Large</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label for="outlet_location_type">Outlet Location Type</label>
+                        <select id="outlet_location_type" name="outlet_location_type" required>
+                            <option value="Tier 1">Tier 1</option>
+                            <option value="Tier 2">Tier 2</option>
+                            <option value="Tier 3">Tier 3</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label for="outlet_type">Outlet Type</label>
+                        <select id="outlet_type" name="outlet_type" required>
+                            <option value="Supermarket Type1">Supermarket Type1</option>
+                            <option value="Supermarket Type2">Supermarket Type2</option>
+                            <option value="Grocery Store">Grocery Store</option>
+                            <option value="Others">Others</option>
+                        </select>
+                    </div>
+
+                    <button class="btn" type="submit">Predict</button>
+                </form>
+            </section>
+
+            <aside class="card result">
+                <h2>Prediction</h2>
+                <div id="prediction" class="alert">Fill the form to predict</div>
+                <div class="helper">
+                    <a href="/health" target="_blank">Health</a> · <a href="/metadata" target="_blank">Metadata</a>
+                </div>
+            </aside>
+        </main>
+
+        <footer class="footer">
+            <span>Sales Forecasting · Random Forest</span>
+        </footer>
+    </div>
+</body>
+</html>

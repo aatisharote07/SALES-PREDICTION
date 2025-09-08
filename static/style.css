@@ -1,0 +1,116 @@
+:root {
+    --bg: #0b1020;
+    --card: #111836;
+    --muted: #94a3b8;
+    --text: #e2e8f0;
+    --accent: #6366f1;
+    --accent-2: #22d3ee;
+    --border: #233053;
+    --success: #16a34a;
+    --danger: #ef4444;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: radial-gradient(1000px 600px at 10% -10%, rgba(34,211,238,0.15), transparent),
+                radial-gradient(800px 500px at 100% 0%, rgba(99,102,241,0.15), transparent),
+                var(--bg);
+    color: var(--text);
+}
+
+.container {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 32px 20px 60px;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 28px;
+}
+
+.header h1 {
+    font-size: 28px;
+    margin: 0 0 6px 0;
+    letter-spacing: 0.4px;
+}
+
+.header p {
+    margin: 0;
+    color: var(--muted);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+}
+
+@media (min-width: 860px) {
+    .grid { grid-template-columns: 1.1fr 0.9fr; }
+}
+
+.card {
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0)) , var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 18px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+}
+
+.card h2 {
+    margin: 0 0 12px 0;
+    font-size: 18px;
+}
+
+.field { margin-bottom: 14px; }
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--muted);
+    font-size: 14px;
+}
+
+select {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: #0f162e;
+    color: var(--text);
+    outline: none;
+}
+
+.btn {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid transparent;
+    border-radius: 12px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    color: white;
+    font-weight: 600;
+    letter-spacing: 0.4px;
+    cursor: pointer;
+}
+
+.btn:hover { filter: brightness(1.05); }
+
+.result { display: flex; flex-direction: column; gap: 10px; }
+
+.alert {
+    padding: 14px;
+    border-radius: 10px;
+    background: rgba(99,102,241,0.08);
+    border: 1px solid var(--border);
+}
+
+.helper { color: var(--muted); font-size: 14px; }
+.helper a { color: var(--accent-2); text-decoration: none; }
+.helper a:hover { text-decoration: underline; }
+
+.footer { text-align: center; margin-top: 16px; color: var(--muted); font-size: 14px; }
