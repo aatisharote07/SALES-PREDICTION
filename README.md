@@ -1,45 +1,46 @@
-🛍️ Sales Prediction
+# 🛍️ Sales Prediction
 
-A machine learning-powered web app that predicts outlet sales using Random Forest regression, featuring a simple web interface for real-time sales forecasting.
+A **machine learning-powered web app** that predicts outlet sales using Random Forest regression, featuring a clean web interface for real-time sales forecasting.
 
-🌐 Live Demo
+---
 
-🔗 [View Live App](https://salesprediction-5wt5.onrender.com)
+## 🌐 Live Demo
 
-🎯 Features
+🔗 [**View Live App**](https://salesprediction-5wt5.onrender.com)
 
-Random Forest regression model for sales prediction
+---
 
-Automated data preprocessing & feature engineering
+## 🎯 Features
 
-Interactive Flask web interface with AJAX
+- ✅ Random Forest regression model for sales prediction  
+- ✅ Automated data preprocessing & feature engineering  
+- ✅ Interactive Flask web interface with AJAX  
+- ✅ REST API for programmatic predictions  
+- ✅ Health check endpoint  
+- ✅ Cloud deployment on Render  
 
-REST API for programmatic predictions
+---
 
-Health check endpoint
+## 🚀 Tech Stack
 
-Cloud deployment on Render
+- **Backend**: Python, Flask  
+- **ML**: scikit-learn, pandas, numpy  
+- **Frontend**: HTML, CSS, JavaScript (AJAX)  
+- **Deployment**: Render, Gunicorn  
 
-🚀 Tech Stack
+---
 
-Backend: Python, Flask
+## 📚 Usage
 
-ML: scikit-learn, pandas, numpy
+### 💻 Web Interface  
+1. Open in browser:  
+   `http://127.0.0.1:5000`  
+2. Input outlet details  
+3. Click **"Predict Sales"** → View result  
 
-Frontend: HTML, CSS, JS (AJAX)
+### ⚡ API Example  
 
-Deployment: Render, Gunicorn
-
-📚 Usage
-Web Interface
-
-Open app in browser (http://127.0.0.1:5000)
-
-Input outlet details
-
-Click "Predict Sales" → View result
-
-API Example
+python
 import requests
 
 response = requests.post('https://salesprediction-5wt5.onrender.com/predict', json={
@@ -51,40 +52,19 @@ response = requests.post('https://salesprediction-5wt5.onrender.com/predict', js
     "Outlet_Type": "Supermarket Type1"
 })
 print(response.json())
-
-⚙️ Setup
+## ⚙️ Setup Instructions
 git clone <repo-url>
 cd SALES_DATA_FORECASTING
 python -m venv .venv
-source .venv/bin/activate  # or .\.venv\Scripts\Activate.ps1
+source .venv/bin/activate  # Or .\.venv\Scripts\Activate.ps1 on Windows
 pip install -r requirements.txt
 python train_model.py
 python app.py
 
+##📊 Model Performance
 
-Access app at http://127.0.0.1:5000
+📉 Mean Absolute Error (MAE)
 
-📊 Model Performance
+📈 R² Score
 
-Mean Absolute Error (MAE)
-
-R² Score
-
-Cross-validated for reliability
-
-🚀 Deployment
-
-Deployed on Render with auto-scaling:
-gunicorn wsgi:application --bind 0.0.0.0:$PORT --workers 2
-
-🤝 Contributing
-
-Fork & branch
-
-Commit & push
-
-Open a PR
-
-📝 License
-
-MIT License
+🔍 Cross-validated for reliability
