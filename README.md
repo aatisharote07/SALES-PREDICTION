@@ -61,10 +61,4 @@ pip install -r requirements.txt
 python train_model.py
 python app.py
 
-##📊 Model Performance
 
-📉 Mean Absolute Error (MAE)
-
-📈 R² Score
-
-🔍 Cross-validated for reliability
