@@ -57,8 +57,11 @@ git clone <repo-url>
 cd SALES_DATA_FORECASTING
 python -m venv .venv
 source .venv/bin/activate  # Or .\.venv\Scripts\Activate.ps1 on Windows
+
 pip install -r requirements.txt
+
 python train_model.py
+
 python app.py
 
 
