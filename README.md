@@ -53,18 +53,18 @@ response = requests.post('https://salesprediction-5wt5.onrender.com/predict', js
 })
 print(response.json())
 ## ⚙️ Setup Instructions
-git clone <repo-url>
+- git clone <repo-url>
 
-cd SALES_DATA_FORECASTING
+- cd SALES_DATA_FORECASTING
 
-python -m venv .venv
+- python -m venv .venv
 
-source .venv/bin/activate  # Or .\.venv\Scripts\Activate.ps1 on Windows
+- source .venv/bin/activate  # Or .\.venv\Scripts\Activate.ps1 on Windows
 
-pip install -r requirements.txt
+- pip install -r requirements.txt
 
-python train_model.py
+- python train_model.py
 
-python app.py
+- python app.py
 
 
