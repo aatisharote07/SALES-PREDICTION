@@ -38,20 +38,8 @@ A **machine learning-powered web app** that predicts outlet sales using Random F
 2. Input outlet details  
 3. Click **"Predict Sales"** → View result  
 
-### ⚡ API Example  
-
-python
-import requests
-
-response = requests.post('https://salesprediction-5wt5.onrender.com/predict', json={
-    "Item_Weight": 12.5,
-    "Item_Visibility": 0.05,
-    "Item_Type": "Dairy",
-    "Outlet_Size": "Medium",
-    "Outlet_Location_Type": "Tier 2",
-    "Outlet_Type": "Supermarket Type1"
-})
-print(response.json())
+ 
+ 
 ## ⚙️ Setup Instructions
 - git clone <repo-url>
 
