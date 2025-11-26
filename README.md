@@ -47,7 +47,7 @@ A **machine learning-powered web app** that predicts outlet sales using Random F
 
 - python -m venv .venv
 
-- source .venv/bin/activate  # Or .\.venv\Scripts\Activate.ps1 on Windows
+- source .venv/bin/activate  # 
 
 - pip install -r requirements.txt
 
