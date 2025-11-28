@@ -40,19 +40,6 @@ A **machine learning-powered web app** that predicts outlet sales using Random F
 
  
  
-## ⚙️ Setup Instructions
-- git clone <repo-url>
 
-- cd SALES_DATA_FORECASTING
-
-- python -m venv .venv
-
-- source .venv/bin/activate  # 
-
-- pip install -r requirements.txt
-
-- python train_model.py
-
-- python app.py
 
 
