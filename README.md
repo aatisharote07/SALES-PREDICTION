@@ -15,7 +15,7 @@ A **machine learning-powered web app** that predicts outlet sales using Random F
 - ✅ Random Forest regression model for sales prediction  
 - ✅ Automated data preprocessing & feature engineering  
 - ✅ Interactive Flask web interface with AJAX  
-- ✅ REST API for programmatic predictions  
+ 
  
 - ✅ Cloud deployment on Render  
 
